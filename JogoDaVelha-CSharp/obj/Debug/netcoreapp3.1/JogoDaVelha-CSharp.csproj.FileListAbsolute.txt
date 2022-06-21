@@ -1,0 +1,16 @@
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\bin\Debug\netcoreapp3.1\JogoDaVelha-CSharp.exe
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\bin\Debug\netcoreapp3.1\JogoDaVelha-CSharp.deps.json
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\bin\Debug\netcoreapp3.1\JogoDaVelha-CSharp.runtimeconfig.json
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\bin\Debug\netcoreapp3.1\JogoDaVelha-CSharp.runtimeconfig.dev.json
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\bin\Debug\netcoreapp3.1\JogoDaVelha-CSharp.dll
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\bin\Debug\netcoreapp3.1\JogoDaVelha-CSharp.pdb
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.csproj.AssemblyReference.cache
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha_CSharp.Form1.resources
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.csproj.GenerateResource.cache
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.AssemblyInfoInputs.cache
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.AssemblyInfo.cs
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.csproj.CoreCompileInputs.cache
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.dll
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.pdb
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.genruntimeconfig.cache
