@@ -60,6 +60,7 @@ namespace JogoDaVelha_CSharp
             this.button2.Size = new System.Drawing.Size(120, 122);
             this.button2.TabIndex = 1;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -68,6 +69,7 @@ namespace JogoDaVelha_CSharp
             this.button3.Size = new System.Drawing.Size(120, 122);
             this.button3.TabIndex = 2;
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -76,6 +78,7 @@ namespace JogoDaVelha_CSharp
             this.button4.Size = new System.Drawing.Size(120, 122);
             this.button4.TabIndex = 3;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -84,6 +87,7 @@ namespace JogoDaVelha_CSharp
             this.button5.Size = new System.Drawing.Size(120, 122);
             this.button5.TabIndex = 4;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -92,6 +96,7 @@ namespace JogoDaVelha_CSharp
             this.button6.Size = new System.Drawing.Size(120, 122);
             this.button6.TabIndex = 5;
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -100,6 +105,7 @@ namespace JogoDaVelha_CSharp
             this.button7.Size = new System.Drawing.Size(120, 122);
             this.button7.TabIndex = 6;
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -108,6 +114,7 @@ namespace JogoDaVelha_CSharp
             this.button8.Size = new System.Drawing.Size(120, 122);
             this.button8.TabIndex = 7;
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
@@ -116,6 +123,7 @@ namespace JogoDaVelha_CSharp
             this.button9.Size = new System.Drawing.Size(120, 122);
             this.button9.TabIndex = 8;
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // groupBoxScoreBoard
             // 
@@ -137,7 +145,6 @@ namespace JogoDaVelha_CSharp
             this.labelPlayer.Size = new System.Drawing.Size(84, 25);
             this.labelPlayer.TabIndex = 1;
             this.labelPlayer.Text = "Jogador:";
-            this.labelPlayer.Click += new System.EventHandler(this.label2_Click);
             // 
             // labelComputer
             // 
@@ -147,7 +154,6 @@ namespace JogoDaVelha_CSharp
             this.labelComputer.Size = new System.Drawing.Size(122, 25);
             this.labelComputer.TabIndex = 0;
             this.labelComputer.Text = "Computador:";
-            this.labelComputer.Click += new System.EventHandler(this.labelComputer_Click);
             // 
             // Form1
             // 
