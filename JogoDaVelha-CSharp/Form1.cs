@@ -27,47 +27,47 @@ namespace JogoDaVelha_CSharp
             buttons = new Button[9] { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button1);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button2);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button3);
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void Button4Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button4);
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Button5Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button5);
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void Button6Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button6);
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void Button7Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button7);
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void Button8Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button8);
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void Button9Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button9);
         }
@@ -111,10 +111,10 @@ namespace JogoDaVelha_CSharp
 
         private Player CheckWinner()
         {
-            // Checando linhas
-            for(int i = 0; i < 9; i += 3)
+            try
             {
-                try
+                // Checando linhas
+                for (int i = 0; i < 9; i += 3)
                 {
                     if ((char.Parse(buttons[i].Text) == char.Parse(buttons[i + 1].Text)) &&
                         (char.Parse(buttons[i].Text) == char.Parse(buttons[i + 2].Text)))
@@ -122,27 +122,35 @@ namespace JogoDaVelha_CSharp
                         labelComputer.Text = "ganhou";
                     }
                 }
-                catch(FormatException)
-                {
-                    // Não é necessário tratar esse tipo de erro
-                }
-            }
 
-            // Checando colunas
-            for (int i = 0; i < 3; i++)
-            {
-                try
+                // Checando colunas
+                for (int i = 0; i < 3; i++)
                 {
+
                     if ((char.Parse(buttons[i].Text) == char.Parse(buttons[i + 3].Text)) &&
                         (char.Parse(buttons[i].Text) == char.Parse(buttons[i + 6].Text)))
                     {
                         labelComputer.Text = "ganhou";
                     }
                 }
-                catch (FormatException)
+
+                // Checando diagonal principal
+                if ((char.Parse(buttons[0].Text) == char.Parse(buttons[4].Text)) &&
+                    (char.Parse(buttons[0].Text) == char.Parse(buttons[8].Text)))
                 {
-                    // Não é necessário tratar esse tipo de erro
+                    labelComputer.Text = "ganhou";
                 }
+
+                // Checando diagonal secundária
+                if ((char.Parse(buttons[2].Text) == char.Parse(buttons[4].Text)) &&
+                    (char.Parse(buttons[2].Text) == char.Parse(buttons[6].Text)))
+                {
+                    labelComputer.Text = "ganhou";
+                }
+            }
+            catch (FormatException)
+            {
+                // Não é necessário tratar esse tipo de erro
             }
 
             return null;
