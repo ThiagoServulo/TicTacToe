@@ -111,47 +111,72 @@ namespace JogoDaVelha_CSharp
 
         private Player CheckWinner()
         {
+            // TODO: Não posso usar o try...catch pois a checagem de vitórias nao ocorre da maneira devida.
+            //       Tenho que pensar em outro solução possível.
+
+            // Checando linhas
             try
             {
-                // Checando linhas
                 for (int i = 0; i < 9; i += 3)
                 {
                     if ((char.Parse(buttons[i].Text) == char.Parse(buttons[i + 1].Text)) &&
                         (char.Parse(buttons[i].Text) == char.Parse(buttons[i + 2].Text)))
                     {
-                        labelComputer.Text = "ganhou";
+                        labelComputer.Text = "ganhou1";
                     }
-                }
-
-                // Checando colunas
-                for (int i = 0; i < 3; i++)
-                {
-
-                    if ((char.Parse(buttons[i].Text) == char.Parse(buttons[i + 3].Text)) &&
-                        (char.Parse(buttons[i].Text) == char.Parse(buttons[i + 6].Text)))
-                    {
-                        labelComputer.Text = "ganhou";
-                    }
-                }
-
-                // Checando diagonal principal
-                if ((char.Parse(buttons[0].Text) == char.Parse(buttons[4].Text)) &&
-                    (char.Parse(buttons[0].Text) == char.Parse(buttons[8].Text)))
-                {
-                    labelComputer.Text = "ganhou";
-                }
-
-                // Checando diagonal secundária
-                if ((char.Parse(buttons[2].Text) == char.Parse(buttons[4].Text)) &&
-                    (char.Parse(buttons[2].Text) == char.Parse(buttons[6].Text)))
-                {
-                    labelComputer.Text = "ganhou";
                 }
             }
             catch (FormatException)
             {
                 // Não é necessário tratar esse tipo de erro
             }
+
+            // Checando colunas
+            try 
+            {
+                for (int i = 0; i < 3; i++)
+                {
+
+                    if ((char.Parse(buttons[i].Text) == char.Parse(buttons[i + 3].Text)) &&
+                        (char.Parse(buttons[i].Text) == char.Parse(buttons[i + 6].Text)))
+                    {
+                        labelComputer.Text = "ganhou2";
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                // Não é necessário tratar esse tipo de erro
+            }
+
+            // Checando diagonal principal
+            try 
+            {
+                if ((char.Parse(buttons[0].Text) == char.Parse(buttons[4].Text)) &&
+                    (char.Parse(buttons[0].Text) == char.Parse(buttons[8].Text)))
+                {
+                    labelComputer.Text = "ganhou3";
+                }
+            }
+            catch (FormatException)
+            {
+                // Não é necessário tratar esse tipo de erro
+            }
+
+            // Checando diagonal secundária
+            try
+            { 
+                if ((char.Parse(buttons[2].Text) == char.Parse(buttons[4].Text)) &&
+                    (char.Parse(buttons[2].Text) == char.Parse(buttons[6].Text)))
+                {
+                    labelComputer.Text = "ganhou4";
+                }
+            }
+            catch (FormatException)
+            {
+                // Não é necessário tratar esse tipo de erro
+            }
+
 
             return null;
         }
