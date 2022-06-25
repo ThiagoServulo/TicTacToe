@@ -177,7 +177,20 @@ namespace JogoDaVelha_CSharp
 
         private Player CheckPlayerWinner(char c)
         {
-            return ((c == computer.Symbol) ? computer : ((c == player.Symbol) ? player : null));
+            if (c == computer.Symbol)
+            {
+                computer.Victories += 1;
+                return computer;
+            }
+            else if (c == player.Symbol)
+            {
+                player.Victories += 1;
+                return player;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 
