@@ -16,7 +16,7 @@ namespace JogoDaVelha_CSharp
         private int round;
         private Player player;
         private Player computer;
-        Button[] buttons;
+        private Button[] buttons;
 
         public Form1()
         {
@@ -74,16 +74,9 @@ namespace JogoDaVelha_CSharp
 
         private void MarkSymbol(Button button)
         {
-            if ((round % 2) == 0)
-            {
-                button.Text = computer.Symbol.ToString();
-            }
-            else
-            {
-                button.Text = player.Symbol.ToString();
-            }
-            round += 1;
+            button.Text = ((round % 2) == 0) ? computer.Symbol.ToString() : button.Text = player.Symbol.ToString();
             button.Enabled = false;
+            round += 1;
             CheckEndGame();
         }
 
@@ -111,74 +104,81 @@ namespace JogoDaVelha_CSharp
 
         private Player CheckWinner()
         {
-            // TODO: Não posso usar o try...catch pois a checagem de vitórias nao ocorre da maneira devida.
-            //       Tenho que pensar em outro solução possível.
+            Player winner;
 
             // Checando linhas
-            try
+            for (int i = 0; i < 9; i += 3)
             {
-                for (int i = 0; i < 9; i += 3)
+                if ((ConvertStringToChar(buttons[i].Text) == ConvertStringToChar(buttons[i + 1].Text)) &&
+                    (ConvertStringToChar(buttons[i].Text) == ConvertStringToChar(buttons[i + 2].Text)))
                 {
-                    if ((char.Parse(buttons[i].Text) == char.Parse(buttons[i + 1].Text)) &&
-                        (char.Parse(buttons[i].Text) == char.Parse(buttons[i + 2].Text)))
+                    winner = CheckPlayerWinner(ConvertStringToChar(buttons[i].Text));
+                    if(winner != null)
                     {
-                        labelComputer.Text = "ganhou1";
+                        labelComputer.Text = $"1 - {winner.Symbol}";
+                        return winner;
                     }
                 }
-            }
-            catch (FormatException)
-            {
-                // Não é necessário tratar esse tipo de erro
             }
 
             // Checando colunas
-            try 
+            for (int i = 0; i < 3; i++)
             {
-                for (int i = 0; i < 3; i++)
+                if ((ConvertStringToChar(buttons[i].Text) == ConvertStringToChar(buttons[i + 3].Text)) &&
+                    (ConvertStringToChar(buttons[i].Text) == ConvertStringToChar(buttons[i + 6].Text)))
                 {
-
-                    if ((char.Parse(buttons[i].Text) == char.Parse(buttons[i + 3].Text)) &&
-                        (char.Parse(buttons[i].Text) == char.Parse(buttons[i + 6].Text)))
+                    winner = CheckPlayerWinner(ConvertStringToChar(buttons[i].Text));
+                    if (winner != null)
                     {
-                        labelComputer.Text = "ganhou2";
+                        labelComputer.Text = $"2 - {winner.Symbol}";
+                        return winner;
                     }
                 }
             }
-            catch (FormatException)
-            {
-                // Não é necessário tratar esse tipo de erro
-            }
 
             // Checando diagonal principal
-            try 
+            if ((ConvertStringToChar(buttons[0].Text) == ConvertStringToChar(buttons[4].Text)) &&
+                (ConvertStringToChar(buttons[0].Text) == ConvertStringToChar(buttons[8].Text)))
             {
-                if ((char.Parse(buttons[0].Text) == char.Parse(buttons[4].Text)) &&
-                    (char.Parse(buttons[0].Text) == char.Parse(buttons[8].Text)))
+                winner = CheckPlayerWinner(ConvertStringToChar(buttons[0].Text));
+                if (winner != null)
                 {
-                    labelComputer.Text = "ganhou3";
+                    labelComputer.Text = $"3 - {winner.Symbol}";
+                    return winner;
                 }
-            }
-            catch (FormatException)
-            {
-                // Não é necessário tratar esse tipo de erro
             }
 
             // Checando diagonal secundária
-            try
-            { 
-                if ((char.Parse(buttons[2].Text) == char.Parse(buttons[4].Text)) &&
-                    (char.Parse(buttons[2].Text) == char.Parse(buttons[6].Text)))
+            if ((ConvertStringToChar(buttons[2].Text) == ConvertStringToChar(buttons[4].Text)) &&
+                (ConvertStringToChar(buttons[2].Text) == ConvertStringToChar(buttons[6].Text)))
+            {
+                winner = CheckPlayerWinner(ConvertStringToChar(buttons[2].Text));
+                if (winner != null)
                 {
-                    labelComputer.Text = "ganhou4";
+                    labelComputer.Text = $"4 - {winner.Symbol}";
+                    return winner;
                 }
             }
-            catch (FormatException)
-            {
-                // Não é necessário tratar esse tipo de erro
-            }
-
 
             return null;
         }
+
+        private char ConvertStringToChar(string s)
+        {
+            try
+            {
+                return char.Parse(s);
+            }
+            catch (FormatException)
+            {
+                return ' ';
+            }
+        }
+
+        private Player CheckPlayerWinner(char c)
+        {
+            return ((c == computer.Symbol) ? computer : ((c == player.Symbol) ? player : null));
+        }
     }
+
 }
