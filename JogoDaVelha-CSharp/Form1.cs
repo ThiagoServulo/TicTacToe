@@ -74,10 +74,19 @@ namespace JogoDaVelha_CSharp
 
         private void MarkSymbol(Button button)
         {
-            button.Text = ((round % 2) == 0) ? computer.Symbol.ToString() : button.Text = player.Symbol.ToString();
+            button.Text = ((round % 2) == 0) ? player.Symbol.ToString() : computer.Symbol.ToString();
             button.Enabled = false;
+            MainGame();
+        }
+
+        private void MainGame()
+        {
             round += 1;
             CheckEndGame();
+            if ((round % 2) == 1)
+            {
+                MarkSymbol(PlayComputer());
+            }
         }
 
         private void CheckEndGame()
@@ -85,10 +94,15 @@ namespace JogoDaVelha_CSharp
             if(round == 9)
             {
                 NewGame();
+                MessageBox.Show("empate");
             }
             else
             {
-                CheckWinner();
+                if (CheckWinner() != null)
+                {
+                    MessageBox.Show("alguém ganhou");
+                    NewGame();
+                }
             }
         }
 
@@ -104,20 +118,14 @@ namespace JogoDaVelha_CSharp
 
         private Player CheckWinner()
         {
-            Player winner;
-
             // Checando linhas
             for (int i = 0; i < 9; i += 3)
             {
                 if ((ConvertStringToChar(buttons[i].Text) == ConvertStringToChar(buttons[i + 1].Text)) &&
-                    (ConvertStringToChar(buttons[i].Text) == ConvertStringToChar(buttons[i + 2].Text)))
+                    (ConvertStringToChar(buttons[i].Text) == ConvertStringToChar(buttons[i + 2].Text)) &&
+                    (ConvertStringToChar(buttons[i].Text) != ' '))
                 {
-                    winner = CheckPlayerWinner(ConvertStringToChar(buttons[i].Text));
-                    if(winner != null)
-                    {
-                        labelComputer.Text = $"1 - {winner.Symbol}";
-                        return winner;
-                    }
+                    return CheckPlayerWinner(ConvertStringToChar(buttons[i].Text));
                 }
             }
 
@@ -125,39 +133,27 @@ namespace JogoDaVelha_CSharp
             for (int i = 0; i < 3; i++)
             {
                 if ((ConvertStringToChar(buttons[i].Text) == ConvertStringToChar(buttons[i + 3].Text)) &&
-                    (ConvertStringToChar(buttons[i].Text) == ConvertStringToChar(buttons[i + 6].Text)))
+                    (ConvertStringToChar(buttons[i].Text) == ConvertStringToChar(buttons[i + 6].Text)) &&
+                    (ConvertStringToChar(buttons[i].Text) != ' '))
                 {
-                    winner = CheckPlayerWinner(ConvertStringToChar(buttons[i].Text));
-                    if (winner != null)
-                    {
-                        labelComputer.Text = $"2 - {winner.Symbol}";
-                        return winner;
-                    }
+                    return CheckPlayerWinner(ConvertStringToChar(buttons[i].Text));
                 }
             }
 
             // Checando diagonal principal
             if ((ConvertStringToChar(buttons[0].Text) == ConvertStringToChar(buttons[4].Text)) &&
-                (ConvertStringToChar(buttons[0].Text) == ConvertStringToChar(buttons[8].Text)))
+                (ConvertStringToChar(buttons[0].Text) == ConvertStringToChar(buttons[8].Text)) &&
+                (ConvertStringToChar(buttons[0].Text) != ' '))
             {
-                winner = CheckPlayerWinner(ConvertStringToChar(buttons[0].Text));
-                if (winner != null)
-                {
-                    labelComputer.Text = $"3 - {winner.Symbol}";
-                    return winner;
-                }
+                return CheckPlayerWinner(ConvertStringToChar(buttons[0].Text));
             }
 
             // Checando diagonal secundária
             if ((ConvertStringToChar(buttons[2].Text) == ConvertStringToChar(buttons[4].Text)) &&
-                (ConvertStringToChar(buttons[2].Text) == ConvertStringToChar(buttons[6].Text)))
+                (ConvertStringToChar(buttons[2].Text) == ConvertStringToChar(buttons[6].Text)) &&
+                (ConvertStringToChar(buttons[2].Text) != ' '))
             {
-                winner = CheckPlayerWinner(ConvertStringToChar(buttons[2].Text));
-                if (winner != null)
-                {
-                    labelComputer.Text = $"4 - {winner.Symbol}";
-                    return winner;
-                }
+                return CheckPlayerWinner(ConvertStringToChar(buttons[2].Text));
             }
 
             return null;
@@ -191,6 +187,78 @@ namespace JogoDaVelha_CSharp
             {
                 return null;
             }
+        }
+
+        private Button PlayComputer()
+        {
+            if(round == 1)
+            {
+                return FirstPlay();
+            }
+            else
+            {
+                Button button = CheckPossibleWinner(computer);
+                if(button != null)
+                {
+                    return button;
+                }
+
+                button = CheckPossibleWinner(player);
+                if (button != null)
+                {
+                    return button;
+                }
+            }
+            return ShuffleButton(buttons);        
+        }
+
+        private Button CheckPossibleWinner(Player possibleWinner)
+        {
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                if (ConvertStringToChar(buttons[i].Text) != ' ')
+                {
+                    continue;
+                }
+                else
+                {
+                    buttons[i].Text = possibleWinner.Symbol.ToString();
+                    Player player = CheckWinner();
+                    buttons[i].Text = ' '.ToString();
+                    if (player != null)
+                    {
+                        return buttons[i];
+                    }
+                }
+            }
+            return null;
+        }
+
+        private Button FirstPlay()
+        {
+            if(ConvertStringToChar(button5.Text) == ' ')
+            {
+                return button5;
+            }
+            else
+            {
+                Button[] buttonsConners = new Button[4] { button1, button3, button7, button9 };
+                return ShuffleButton(buttonsConners);
+            }
+        }
+
+        private Button ShuffleButton(Button[] buttons)
+        {
+            List<Button> ListButtons = new List<Button>();
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                if (ConvertStringToChar(buttons[i].Text) == ' ')
+                {
+                    ListButtons.Add(buttons[i]);
+                }
+            }
+            Random randNum = new Random();
+            return ListButtons[randNum.Next(ListButtons.Count)];
         }
     }
 
