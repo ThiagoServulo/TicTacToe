@@ -17,14 +17,18 @@ namespace JogoDaVelha_CSharp
         private Player player;
         private Player computer;
         private Button[] buttons;
+        private Button[] buttonsConners;
+        private Button[] buttonsCross;
 
         public Form1()
         {
             InitializeComponent();
-            round = 0;
             player = new Player(0, 0, 'X');
             computer = new Player(0, 0, 'O');
             buttons = new Button[9] { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
+            buttonsConners = new Button[4] { button1, button3, button7, button9 };
+            buttonsCross = new Button[4] { button2, button4, button6, button8 };
+            NewGame();
         }
 
         private void Button1Click(object sender, EventArgs e)
@@ -93,8 +97,8 @@ namespace JogoDaVelha_CSharp
         {
             if(round == 9)
             {
-                NewGame();
                 MessageBox.Show("empate");
+                NewGame();
             }
             else
             {
@@ -113,6 +117,7 @@ namespace JogoDaVelha_CSharp
             {
                 button.Text = "";
                 button.Enabled = true;
+                button.BackColor = Color.FromArgb(224, 224, 224);
             }
         }
 
@@ -191,24 +196,56 @@ namespace JogoDaVelha_CSharp
 
         private Button PlayComputer()
         {
-            if(round == 1)
+            // Checa a possibilidade de vitória do computador
+            Button button = CheckPossibleWinner(computer);
+            if (button != null)
             {
-                return FirstPlay();
+                return button;
             }
-            else
+
+            // Checa a possibilidade de vitória do jogador
+            button = CheckPossibleWinner(player);
+            if (button != null)
             {
-                Button button = CheckPossibleWinner(computer);
-                if(button != null)
+                return button;
+            }
+
+            if (round == 1)
+            {
+                // Se o meio estiver vazio, jogar nele
+                if (ConvertStringToChar(button5.Text) == ' ')
                 {
-                    return button;
+                    return button5;
+                }
+                else // Se não, jogar em uma das quinas
+                {
+                    return ShuffleButton(buttonsConners);
+                }
+            }
+            else if(round == 3)
+            {
+                // Se duas quinas estiverem marcadas, jogar na posição de cruz
+                int quant = 0;
+                foreach(Button but in buttonsConners)
+                {
+                    if(ConvertStringToChar(but.Text) == player.Symbol)
+                    {
+                        quant += 1;
+                    }
                 }
 
-                button = CheckPossibleWinner(player);
-                if (button != null)
+                if (quant == 2)
                 {
-                    return button;
+                    return ShuffleButton(buttonsCross);
+                }
+                else
+                {
+                    // Pensar na lógica da quina para nao perder aqui
+                    return ShuffleButton(buttonsConners);
                 }
             }
+
+            // Sorteia uma casa aleatória que esteja vazia para jogar
             return ShuffleButton(buttons);        
         }
 
@@ -232,19 +269,6 @@ namespace JogoDaVelha_CSharp
                 }
             }
             return null;
-        }
-
-        private Button FirstPlay()
-        {
-            if(ConvertStringToChar(button5.Text) == ' ')
-            {
-                return button5;
-            }
-            else
-            {
-                Button[] buttonsConners = new Button[4] { button1, button3, button7, button9 };
-                return ShuffleButton(buttonsConners);
-            }
         }
 
         private Button ShuffleButton(Button[] buttons)
