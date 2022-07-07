@@ -29,6 +29,7 @@ namespace JogoDaVelha_CSharp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -39,9 +40,9 @@ namespace JogoDaVelha_CSharp
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.groupBoxScoreBoard = new System.Windows.Forms.GroupBox();
+            this.labelDraws = new System.Windows.Forms.Label();
             this.labelPlayer = new System.Windows.Forms.Label();
             this.labelComputer = new System.Windows.Forms.Label();
-            this.labelDraws = new System.Windows.Forms.Label();
             this.groupBoxScoreBoard.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -159,6 +160,15 @@ namespace JogoDaVelha_CSharp
             this.groupBoxScoreBoard.TabStop = false;
             this.groupBoxScoreBoard.Text = "Placar Geral:";
             // 
+            // labelDraws
+            // 
+            this.labelDraws.AutoSize = true;
+            this.labelDraws.Location = new System.Drawing.Point(145, 35);
+            this.labelDraws.Name = "labelDraws";
+            this.labelDraws.Size = new System.Drawing.Size(87, 25);
+            this.labelDraws.TabIndex = 2;
+            this.labelDraws.Text = "Empates:";
+            // 
             // labelPlayer
             // 
             this.labelPlayer.AutoSize = true;
@@ -177,15 +187,6 @@ namespace JogoDaVelha_CSharp
             this.labelComputer.TabIndex = 0;
             this.labelComputer.Text = "Computador:";
             // 
-            // labelDraws
-            // 
-            this.labelDraws.AutoSize = true;
-            this.labelDraws.Location = new System.Drawing.Point(145, 35);
-            this.labelDraws.Name = "labelDraws";
-            this.labelDraws.Size = new System.Drawing.Size(87, 25);
-            this.labelDraws.TabIndex = 2;
-            this.labelDraws.Text = "Empates:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -201,6 +202,11 @@ namespace JogoDaVelha_CSharp
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(411, 522);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(411, 522);
             this.Name = "Form1";
             this.Text = "Jogo da velha";
             this.groupBoxScoreBoard.ResumeLayout(false);
