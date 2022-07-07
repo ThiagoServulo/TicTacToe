@@ -95,17 +95,20 @@ namespace JogoDaVelha_CSharp
 
         private void CheckEndGame()
         {
-            if(round == 9)
+            if (round == 9)
             {
-                MessageBox.Show("empate");
-                NewGame();
+                EndGame("Empate");
             }
             else
             {
-                if (CheckWinner() != null)
+                if (CheckWinner() == computer)
                 {
-                    MessageBox.Show("alguém ganhou");
-                    NewGame();
+                    EndGame("Você perdeu");
+                    
+                }
+                else if (CheckWinner() == player)
+                {
+                    EndGame("Você ganhou");
                 }
             }
         }
@@ -113,7 +116,7 @@ namespace JogoDaVelha_CSharp
         private void NewGame()
         {
             round = 0;
-            foreach(Button button in buttons)
+            foreach (Button button in buttons)
             {
                 button.Text = "";
                 button.Enabled = true;
@@ -196,16 +199,16 @@ namespace JogoDaVelha_CSharp
 
         private Button PlayComputer()
         {
+            Button button = null;
+
             // Checa a possibilidade de vitória do computador
-            Button button = CheckPossibleWinner(computer);
-            if (button != null)
+            if ((button = CheckPossibleWinner(computer)) != null)
             {
                 return button;
             }
 
             // Checa a possibilidade de vitória do jogador
-            button = CheckPossibleWinner(player);
-            if (button != null)
+            if ((button = CheckPossibleWinner(player)) != null)
             {
                 return button;
             }
@@ -222,13 +225,13 @@ namespace JogoDaVelha_CSharp
                     return ShuffleButton(buttonsConners);
                 }
             }
-            else if(round == 3)
+            else if (round == 3)
             {
                 // Se duas quinas estiverem marcadas, jogar na posição de cruz
                 int quant = 0;
-                foreach(Button but in buttonsConners)
+                foreach (Button but in buttonsConners)
                 {
-                    if(ConvertStringToChar(but.Text) == player.Symbol)
+                    if (ConvertStringToChar(but.Text) == player.Symbol)
                     {
                         quant += 1;
                     }
@@ -240,13 +243,47 @@ namespace JogoDaVelha_CSharp
                 }
                 else
                 {
-                    // Pensar na lógica da quina para nao perder aqui
-                    return ShuffleButton(buttonsConners);
+                    // Checa diagonal principal
+                    if ((button = CheckDiagonals(0, 8, 4)) != null)
+                    {
+                        return button;
+                    }
+
+                    // Checa diagonal secundária
+                    if ((button = CheckDiagonals(2, 6, 2)) != null)
+                    {
+                        return button;
+                    }
                 }
             }
 
             // Sorteia uma casa aleatória que esteja vazia para jogar
-            return ShuffleButton(buttons);        
+            return ShuffleButton(buttons);
+        }
+
+        private Button CheckDiagonals(int init, int end, int step)
+        {
+            int count = 0;
+            for (int i = init; i <= end; i += step)
+            {
+                if (ConvertStringToChar(buttons[i].Text) != ' ')
+                {
+                    count++;
+                }
+            }
+
+            if(count == 2)
+            {
+                for (int i = init; i <= end; i += step)
+                {
+                    if (ConvertStringToChar(buttons[i].Text) == ' ')
+                    {
+                        return buttons[i];
+                    }
+                }
+            }
+
+            return null;
         }
 
         private Button CheckPossibleWinner(Player possibleWinner)
@@ -283,6 +320,12 @@ namespace JogoDaVelha_CSharp
             }
             Random randNum = new Random();
             return ListButtons[randNum.Next(ListButtons.Count)];
+        }
+
+        private void EndGame(string message)
+        {
+            MessageBox.Show(message, "Fim de jogo");
+            NewGame();
         }
     }
 

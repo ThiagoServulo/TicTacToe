@@ -41,6 +41,7 @@ namespace JogoDaVelha_CSharp
             this.groupBoxScoreBoard = new System.Windows.Forms.GroupBox();
             this.labelPlayer = new System.Windows.Forms.Label();
             this.labelComputer = new System.Windows.Forms.Label();
+            this.labelDraws = new System.Windows.Forms.Label();
             this.groupBoxScoreBoard.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,6 +148,7 @@ namespace JogoDaVelha_CSharp
             // 
             // groupBoxScoreBoard
             // 
+            this.groupBoxScoreBoard.Controls.Add(this.labelDraws);
             this.groupBoxScoreBoard.Controls.Add(this.labelPlayer);
             this.groupBoxScoreBoard.Controls.Add(this.labelComputer);
             this.groupBoxScoreBoard.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -160,7 +162,7 @@ namespace JogoDaVelha_CSharp
             // labelPlayer
             // 
             this.labelPlayer.AutoSize = true;
-            this.labelPlayer.Location = new System.Drawing.Point(168, 35);
+            this.labelPlayer.Location = new System.Drawing.Point(255, 34);
             this.labelPlayer.Name = "labelPlayer";
             this.labelPlayer.Size = new System.Drawing.Size(84, 25);
             this.labelPlayer.TabIndex = 1;
@@ -169,11 +171,20 @@ namespace JogoDaVelha_CSharp
             // labelComputer
             // 
             this.labelComputer.AutoSize = true;
-            this.labelComputer.Location = new System.Drawing.Point(6, 35);
+            this.labelComputer.Location = new System.Drawing.Point(4, 35);
             this.labelComputer.Name = "labelComputer";
             this.labelComputer.Size = new System.Drawing.Size(122, 25);
             this.labelComputer.TabIndex = 0;
             this.labelComputer.Text = "Computador:";
+            // 
+            // labelDraws
+            // 
+            this.labelDraws.AutoSize = true;
+            this.labelDraws.Location = new System.Drawing.Point(145, 35);
+            this.labelDraws.Name = "labelDraws";
+            this.labelDraws.Size = new System.Drawing.Size(87, 25);
+            this.labelDraws.TabIndex = 2;
+            this.labelDraws.Text = "Empates:";
             // 
             // Form1
             // 
@@ -191,7 +202,7 @@ namespace JogoDaVelha_CSharp
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Jogo da velha";
             this.groupBoxScoreBoard.ResumeLayout(false);
             this.groupBoxScoreBoard.PerformLayout();
             this.ResumeLayout(false);
@@ -212,6 +223,7 @@ namespace JogoDaVelha_CSharp
         private System.Windows.Forms.GroupBox groupBoxScoreBoard;
         private System.Windows.Forms.Label labelPlayer;
         private System.Windows.Forms.Label labelComputer;
+        private System.Windows.Forms.Label labelDraws;
     }
 }
 
