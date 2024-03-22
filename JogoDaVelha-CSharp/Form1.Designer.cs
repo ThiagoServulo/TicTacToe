@@ -41,8 +41,8 @@ namespace Tic_Tac_Toe
             this.button9 = new System.Windows.Forms.Button();
             this.groupBoxScoreBoard = new System.Windows.Forms.GroupBox();
             this.labelDraws = new System.Windows.Forms.Label();
-            this.labelPlayer = new System.Windows.Forms.Label();
-            this.labelComputer = new System.Windows.Forms.Label();
+            this.labelVictories = new System.Windows.Forms.Label();
+            this.labelDefeats = new System.Windows.Forms.Label();
             this.groupBoxScoreBoard.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,15 +150,15 @@ namespace Tic_Tac_Toe
             // groupBoxScoreBoard
             // 
             this.groupBoxScoreBoard.Controls.Add(this.labelDraws);
-            this.groupBoxScoreBoard.Controls.Add(this.labelPlayer);
-            this.groupBoxScoreBoard.Controls.Add(this.labelComputer);
+            this.groupBoxScoreBoard.Controls.Add(this.labelVictories);
+            this.groupBoxScoreBoard.Controls.Add(this.labelDefeats);
             this.groupBoxScoreBoard.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBoxScoreBoard.Location = new System.Drawing.Point(12, 12);
             this.groupBoxScoreBoard.Name = "groupBoxScoreBoard";
             this.groupBoxScoreBoard.Size = new System.Drawing.Size(372, 79);
             this.groupBoxScoreBoard.TabIndex = 9;
             this.groupBoxScoreBoard.TabStop = false;
-            this.groupBoxScoreBoard.Text = "Placar Geral:";
+            this.groupBoxScoreBoard.Text = "Total Score:";
             // 
             // labelDraws
             // 
@@ -167,25 +167,25 @@ namespace Tic_Tac_Toe
             this.labelDraws.Name = "labelDraws";
             this.labelDraws.Size = new System.Drawing.Size(87, 25);
             this.labelDraws.TabIndex = 2;
-            this.labelDraws.Text = "Empates:";
+            this.labelDraws.Text = "Draws: 0";
             // 
-            // labelPlayer
+            // labelVictories
             // 
-            this.labelPlayer.AutoSize = true;
-            this.labelPlayer.Location = new System.Drawing.Point(255, 34);
-            this.labelPlayer.Name = "labelPlayer";
-            this.labelPlayer.Size = new System.Drawing.Size(84, 25);
-            this.labelPlayer.TabIndex = 1;
-            this.labelPlayer.Text = "Jogador:";
+            this.labelVictories.AutoSize = true;
+            this.labelVictories.Location = new System.Drawing.Point(255, 34);
+            this.labelVictories.Name = "labelVictories";
+            this.labelVictories.Size = new System.Drawing.Size(84, 25);
+            this.labelVictories.TabIndex = 1;
+            this.labelVictories.Text = "Victories: 0";
             // 
-            // labelComputer
+            // labelDefeats
             // 
-            this.labelComputer.AutoSize = true;
-            this.labelComputer.Location = new System.Drawing.Point(4, 35);
-            this.labelComputer.Name = "labelComputer";
-            this.labelComputer.Size = new System.Drawing.Size(122, 25);
-            this.labelComputer.TabIndex = 0;
-            this.labelComputer.Text = "Computador:";
+            this.labelDefeats.AutoSize = true;
+            this.labelDefeats.Location = new System.Drawing.Point(4, 35);
+            this.labelDefeats.Name = "labelDefeats";
+            this.labelDefeats.Size = new System.Drawing.Size(122, 25);
+            this.labelDefeats.TabIndex = 0;
+            this.labelDefeats.Text = "Defeats: 0";
             // 
             // Form1
             // 
@@ -227,8 +227,8 @@ namespace Tic_Tac_Toe
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.GroupBox groupBoxScoreBoard;
-        private System.Windows.Forms.Label labelPlayer;
-        private System.Windows.Forms.Label labelComputer;
+        private System.Windows.Forms.Label labelVictories;
+        private System.Windows.Forms.Label labelDefeats;
         private System.Windows.Forms.Label labelDraws;
     }
 }

@@ -108,6 +108,7 @@ namespace Tic_Tac_Toe
                 player.AddDraw();
                 computer.AddDraw();
                 EndGame("Draw");
+                labelDraws.Text = $"Draw: {player.Draws}";
             }
             else
             {
@@ -285,6 +286,30 @@ namespace Tic_Tac_Toe
                     {
                         return button;
                     }
+                }
+
+                if ((ConvertStringToChar(buttons[1].Text) == ConvertStringToChar(buttons[3].Text)) &&
+                    (ConvertStringToChar(buttons[1].Text) != ' '))
+                {
+                    return buttons[0];
+                }
+
+                if ((ConvertStringToChar(buttons[1].Text) == ConvertStringToChar(buttons[5].Text)) &&
+                    (ConvertStringToChar(buttons[1].Text) != ' '))
+                {
+                    return buttons[2];
+                }
+
+                if ((ConvertStringToChar(buttons[3].Text) == ConvertStringToChar(buttons[7].Text)) &&
+                    (ConvertStringToChar(buttons[3].Text) != ' '))
+                {
+                    return buttons[6];
+                }
+
+                if ((ConvertStringToChar(buttons[5].Text) == ConvertStringToChar(buttons[7].Text)) &&
+                    (ConvertStringToChar(buttons[5].Text) != ' '))
+                {
+                    return buttons[8];
                 }
             }
 
