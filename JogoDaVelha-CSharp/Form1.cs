@@ -107,8 +107,8 @@ namespace Tic_Tac_Toe
             {
                 player.AddDraw();
                 computer.AddDraw();
-                EndGame("Draw");
                 labelDraws.Text = $"Draw: {player.Draws}";
+                EndGame("Draw");
             }
             else
             {
@@ -116,11 +116,13 @@ namespace Tic_Tac_Toe
                 if (CheckWinner() == computer)
                 {
                     computer.AddVictory();
+                    labelDefeats.Text = $"Defeats: {computer.Victories}";
                     EndGame("You lost");     
                 }
                 else if (CheckWinner() == player) // Check if the player won
                 {
                     player.AddVictory();
+                    labelVictories.Text = $"Victory: {player.Victories}";
                     EndGame("You win");
                 }
             }
@@ -215,12 +217,10 @@ namespace Tic_Tac_Toe
         {
             if (c == computer.Symbol)
             {
-                computer.Victories += 1;
                 return computer;
             }
             else if (c == player.Symbol)
             {
-                player.Victories += 1;
                 return player;
             }
             else

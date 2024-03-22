@@ -208,7 +208,7 @@ namespace Tic_Tac_Toe
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(411, 522);
             this.Name = "Form1";
-            this.Text = "Jogo da velha";
+            this.Text = "Tic-Tac-Toe";
             this.groupBoxScoreBoard.ResumeLayout(false);
             this.groupBoxScoreBoard.PerformLayout();
             this.ResumeLayout(false);
