@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using JogoDaVelha_CSharp.Entities;
+using Tic_Tac_Toe.Entities;
 
-namespace JogoDaVelha_CSharp
+namespace Tic_Tac_Toe
 {
     public partial class Form1 : Form
     {
@@ -107,21 +102,25 @@ namespace JogoDaVelha_CSharp
         ---------------------------------------------------------------------------------------------------*/
         private void CheckEndGame()
         {
-             // Checa se ocorreu um empate (as 9 casas estão preenchidas e não há um ganhador)
+            // Check if it's a draw (all 9 squares are filled and there's no winner)
             if (round == 9)
             {
-                EndGame("Empate");
+                player.AddDraw();
+                computer.AddDraw();
+                EndGame("Draw");
             }
             else
             {
-                // Checa se o computador venceu
+                // Check if the computer won
                 if (CheckWinner() == computer)
                 {
-                    EndGame("Você perdeu");     
+                    computer.AddVictory();
+                    EndGame("You lost");     
                 }
-                else if (CheckWinner() == player) // Checa se o jogador venceu
+                else if (CheckWinner() == player) // Check if the player won
                 {
-                    EndGame("Você ganhou");
+                    player.AddVictory();
+                    EndGame("You win");
                 }
             }
         }
@@ -151,7 +150,7 @@ namespace JogoDaVelha_CSharp
         ---------------------------------------------------------------------------------------------------*/
         private Player CheckWinner()
         {
-            // Checando linhas
+            // Check rows
             for (int i = 0; i < 9; i += 3)
             {
                 if ((ConvertStringToChar(buttons[i].Text) == ConvertStringToChar(buttons[i + 1].Text)) &&
@@ -162,7 +161,7 @@ namespace JogoDaVelha_CSharp
                 }
             }
 
-            // Checando colunas
+            // Check columns
             for (int i = 0; i < 3; i++)
             {
                 if ((ConvertStringToChar(buttons[i].Text) == ConvertStringToChar(buttons[i + 3].Text)) &&
@@ -173,7 +172,7 @@ namespace JogoDaVelha_CSharp
                 }
             }
 
-            // Checando diagonal principal
+            // Check main diagonal
             if ((ConvertStringToChar(buttons[0].Text) == ConvertStringToChar(buttons[4].Text)) &&
                 (ConvertStringToChar(buttons[0].Text) == ConvertStringToChar(buttons[8].Text)) &&
                 (ConvertStringToChar(buttons[0].Text) != ' '))
@@ -181,7 +180,7 @@ namespace JogoDaVelha_CSharp
                 return CheckPlayerWinner(ConvertStringToChar(buttons[0].Text));
             }
 
-            // Checando diagonal secundária
+            // Check secundary diagonal
             if ((ConvertStringToChar(buttons[2].Text) == ConvertStringToChar(buttons[4].Text)) &&
                 (ConvertStringToChar(buttons[2].Text) == ConvertStringToChar(buttons[6].Text)) &&
                 (ConvertStringToChar(buttons[2].Text) != ' '))
@@ -231,15 +230,15 @@ namespace JogoDaVelha_CSharp
 
         private Button PlayComputer()
         {
-            Button button = null;
+            Button button;
 
-            // Checa a possibilidade de vitória do computador
+            // Check for computer's winning possibility
             if ((button = CheckPossibleWinner(computer)) != null)
             {
                 return button;
             }
 
-            // Checa a possibilidade de vitória do jogador
+            // Check for player's winning possibility
             if ((button = CheckPossibleWinner(player)) != null)
             {
                 return button;
@@ -247,19 +246,19 @@ namespace JogoDaVelha_CSharp
 
             if (round == 1)
             {
-                // Se o meio estiver vazio, jogar nele
+                // If the center is empty, play there
                 if (ConvertStringToChar(button5.Text) == ' ')
                 {
                     return button5;
                 }
-                else // Se não, jogar em uma das quinas
+                else // If not, play in one of the corners
                 {
                     return ShuffleButton(buttonsConners);
                 }
             }
             else if (round == 3)
             {
-                // Se duas quinas estiverem marcadas, jogar na posição de cruz
+                // If two corners are marked, play in the criss-cross position
                 int quant = 0;
                 foreach (Button but in buttonsConners)
                 {
@@ -275,13 +274,13 @@ namespace JogoDaVelha_CSharp
                 }
                 else
                 {
-                    // Checa diagonal principal
+                    // Check main diagonal
                     if ((button = CheckDiagonals(0, 8, 4)) != null) 
                     {
                         return button;
                     }
 
-                    // Checa diagonal secundária
+                    // Check secundary diagonal
                     if ((button = CheckDiagonals(2, 6, 2)) != null)
                     {
                         return button;
@@ -289,7 +288,7 @@ namespace JogoDaVelha_CSharp
                 }
             }
 
-            // Sorteia uma casa aleatória que esteja vazia para jogar
+            // Randomly choose an empty square to play
             return ShuffleButton(buttons);
         }
 
@@ -356,7 +355,7 @@ namespace JogoDaVelha_CSharp
 
         private void EndGame(string message)
         {
-            MessageBox.Show(message, "Fim de jogo");
+            MessageBox.Show(message, "End of game");
             NewGame();
         }
     }

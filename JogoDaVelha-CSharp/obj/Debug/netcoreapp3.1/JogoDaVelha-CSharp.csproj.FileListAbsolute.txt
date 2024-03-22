@@ -5,7 +5,6 @@ D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\bin\Debug\netcoreapp3.1\JogoDa
 D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\bin\Debug\netcoreapp3.1\JogoDaVelha-CSharp.dll
 D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\bin\Debug\netcoreapp3.1\JogoDaVelha-CSharp.pdb
 D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.csproj.AssemblyReference.cache
-D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha_CSharp.Form1.resources
 D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.csproj.GenerateResource.cache
 D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.GeneratedMSBuildEditorConfig.editorconfig
 D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.AssemblyInfoInputs.cache
@@ -14,3 +13,4 @@ D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDa
 D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.dll
 D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.pdb
 D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\JogoDaVelha-CSharp.genruntimeconfig.cache
+D:\Projetos\JogoDaVelha-CSharp\JogoDaVelha-CSharp\obj\Debug\netcoreapp3.1\Tic_Tac_Toe.Form1.resources

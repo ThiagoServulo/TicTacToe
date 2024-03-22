@@ -1,5 +1,5 @@
 ﻿
-namespace JogoDaVelha_CSharp
+namespace Tic_Tac_Toe
 {
     partial class Form1
     {

@@ -15,9 +15,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projetos\\JogoDaVelha-CSharp\\JogoDaVelha-CSharp\\JogoDaVelha-CSharp.csproj",
-      "projectName": "JogoDaVelha-CSharp",
-      "projectPath": "D:\\Projetos\\JogoDaVelha-CSharp\\JogoDaVelha-CSharp\\JogoDaVelha-CSharp.csproj",
+      "projectUniqueName": "D:\\Projetos\\JogoDaVelha-CSharp\\JogoDaVelha-CSharp\\Tic-Tac-Toe.csproj",
+      "projectName": "Tic-Tac-Toe",
+      "projectPath": "D:\\Projetos\\JogoDaVelha-CSharp\\JogoDaVelha-CSharp\\Tic-Tac-Toe.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "D:\\Projetos\\JogoDaVelha-CSharp\\JogoDaVelha-CSharp\\obj\\",
       "projectStyle": "PackageReference",

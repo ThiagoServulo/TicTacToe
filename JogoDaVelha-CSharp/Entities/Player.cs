@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace JogoDaVelha_CSharp.Entities
+namespace Tic_Tac_Toe.Entities
 {
     class Player
     {
@@ -15,6 +15,16 @@ namespace JogoDaVelha_CSharp.Entities
             Victories = victories;
             Draws = draws;
             Symbol = symbol;
+        }
+
+        public void AddVictory()
+        {
+            ++Victories;
+        }
+
+        public void AddDraw()
+        {
+            ++Draws;
         }
     }
 }
