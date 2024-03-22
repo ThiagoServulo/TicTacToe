@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projetos\\JogoDaVelha-CSharp\\JogoDaVelha-CSharp\\Tic-Tac-Toe.csproj",
+      "projectUniqueName": "D:\\Projetos\\TicTacToe\\TicTacToe\\Tic-Tac-Toe.csproj",
       "projectName": "Tic-Tac-Toe",
-      "projectPath": "D:\\Projetos\\JogoDaVelha-CSharp\\JogoDaVelha-CSharp\\Tic-Tac-Toe.csproj",
+      "projectPath": "D:\\Projetos\\TicTacToe\\TicTacToe\\Tic-Tac-Toe.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\Projetos\\JogoDaVelha-CSharp\\JogoDaVelha-CSharp\\obj\\",
+      "outputPath": "D:\\Projetos\\TicTacToe\\TicTacToe\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
