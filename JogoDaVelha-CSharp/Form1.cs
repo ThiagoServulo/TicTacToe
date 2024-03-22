@@ -83,6 +83,12 @@ namespace JogoDaVelha_CSharp
             MainGame();
         }
 
+        /*--------------------------------------------------------------------------------------------------
+        Função: MainGame.
+        Descrição: Função responsável por gerenciar as jogadas e fazer o controle do jogo.
+        Argumentos: Nenhum.
+        Retorno: Nenhum.
+        ---------------------------------------------------------------------------------------------------*/
         private void MainGame()
         {
             round += 1;
@@ -93,26 +99,39 @@ namespace JogoDaVelha_CSharp
             }
         }
 
+        /*--------------------------------------------------------------------------------------------------
+        Função: CheckEndGame.
+        Descrição: Função que checa se o jogo chegou ao fim.
+        Argumentos: Nenhum.
+        Retorno: Nenhum.
+        ---------------------------------------------------------------------------------------------------*/
         private void CheckEndGame()
         {
+             // Checa se ocorreu um empate (as 9 casas estão preenchidas e não há um ganhador)
             if (round == 9)
             {
                 EndGame("Empate");
             }
             else
             {
+                // Checa se o computador venceu
                 if (CheckWinner() == computer)
                 {
-                    EndGame("Você perdeu");
-                    
+                    EndGame("Você perdeu");     
                 }
-                else if (CheckWinner() == player)
+                else if (CheckWinner() == player) // Checa se o jogador venceu
                 {
                     EndGame("Você ganhou");
                 }
             }
         }
 
+        /*--------------------------------------------------------------------------------------------------
+        Função: NewGame.
+        Descrição: Função responsável por resetar o tabuleiro e as variáveis globais.
+        Argumentos: Nenhum.
+        Retorno: Nenhum.
+        ---------------------------------------------------------------------------------------------------*/
         private void NewGame()
         {
             round = 0;
@@ -124,6 +143,12 @@ namespace JogoDaVelha_CSharp
             }
         }
 
+        /*--------------------------------------------------------------------------------------------------
+        Função: CheckWinner.
+        Descrição: Função responsável por checar se há um vencedor em uma partida ou não.
+        Argumentos: Nenhum.
+        Retorno: Retorna uma classe do tipo 'Player' caso exista um vencedor, ou 'null' caso não exista.
+        ---------------------------------------------------------------------------------------------------*/
         private Player CheckWinner()
         {
             // Checando linhas
@@ -167,6 +192,13 @@ namespace JogoDaVelha_CSharp
             return null;
         }
 
+        /*--------------------------------------------------------------------------------------------------
+        Função: ConvertStringToChar.
+        Descrição: Função responsável por converter uma variável do tipo string para char.
+                   Se a string estiver vazia, será retornado o caractere ' '.
+        Argumentos: s - string a ser convertida.
+        Retorno: Retorna o valor convertido no tipo char.
+        ---------------------------------------------------------------------------------------------------*/
         private char ConvertStringToChar(string s)
         {
             try
@@ -244,7 +276,7 @@ namespace JogoDaVelha_CSharp
                 else
                 {
                     // Checa diagonal principal
-                    if ((button = CheckDiagonals(0, 8, 4)) != null)
+                    if ((button = CheckDiagonals(0, 8, 4)) != null) 
                     {
                         return button;
                     }
