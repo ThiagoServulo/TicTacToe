@@ -21,7 +21,6 @@ D:\Projetos\TicTacToe\TicTacToe\bin\Debug\netcoreapp3.1\Tic-Tac-Toe.runtimeconfi
 D:\Projetos\TicTacToe\TicTacToe\bin\Debug\netcoreapp3.1\Tic-Tac-Toe.dll
 D:\Projetos\TicTacToe\TicTacToe\bin\Debug\netcoreapp3.1\Tic-Tac-Toe.pdb
 D:\Projetos\TicTacToe\TicTacToe\obj\Debug\netcoreapp3.1\Tic-Tac-Toe.csproj.AssemblyReference.cache
-D:\Projetos\TicTacToe\TicTacToe\obj\Debug\netcoreapp3.1\Tic_Tac_Toe.Form1.resources
 D:\Projetos\TicTacToe\TicTacToe\obj\Debug\netcoreapp3.1\Tic-Tac-Toe.csproj.GenerateResource.cache
 D:\Projetos\TicTacToe\TicTacToe\obj\Debug\netcoreapp3.1\Tic-Tac-Toe.GeneratedMSBuildEditorConfig.editorconfig
 D:\Projetos\TicTacToe\TicTacToe\obj\Debug\netcoreapp3.1\Tic-Tac-Toe.AssemblyInfoInputs.cache
@@ -30,3 +29,4 @@ D:\Projetos\TicTacToe\TicTacToe\obj\Debug\netcoreapp3.1\Tic-Tac-Toe.csproj.CoreC
 D:\Projetos\TicTacToe\TicTacToe\obj\Debug\netcoreapp3.1\Tic-Tac-Toe.dll
 D:\Projetos\TicTacToe\TicTacToe\obj\Debug\netcoreapp3.1\Tic-Tac-Toe.pdb
 D:\Projetos\TicTacToe\TicTacToe\obj\Debug\netcoreapp3.1\Tic-Tac-Toe.genruntimeconfig.cache
+D:\Projetos\TicTacToe\TicTacToe\obj\Debug\netcoreapp3.1\Tic_Tac_Toe.TicTacToe.resources

@@ -8,105 +8,180 @@ namespace Tic_Tac_Toe
 {
     /** ************************************************************************
     * \brief Information about the game.
-    * \details 
+    * \details This class contains all functions responsible for the game logic.
     * \author Thiago Sérvulo Guimarães - thiagoservulog@gmail.com
     * \date 25/03/2024
     * \version v1.1.0
     ***************************************************************************/
-    public partial class Form1 : Form
+    public partial class TicTacToe : Form
     {
+        /// \brief Number of rounds of the game.
         private int round;
+
+        /// \brief Player information.
         private Player player;
+
+        /// \brief Computer information.
         private Player computer;
+
+        /// \brief It contains all the buttons of the game.
         private Button[] buttons;
-        private Button[] buttonsConners;
+
+        /// \brief It contains all the corner buttons of the board.
+        private Button[] buttonsCorners;
+
+        /// \brief It contains all the buttons in the cross position of the board.
         private Button[] buttonsCross;
 
-        public Form1()
+        public TicTacToe()
         {
             InitializeComponent();
             player = new Player(0, 0, 'X');
             computer = new Player(0, 0, 'O');
             buttons = new Button[9] { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
-            buttonsConners = new Button[4] { button1, button3, button7, button9 };
+            buttonsCorners = new Button[4] { button1, button3, button7, button9 };
             buttonsCross = new Button[4] { button2, button4, button6, button8 };
             NewGame();
         }
 
+        /** ************************************************************************
+        * \brief 
+        * \details 
+        * \param sender
+        * \param e
+        ***************************************************************************/
         private void Button1Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button1);
         }
 
+        /** ************************************************************************
+        * \brief 
+        * \details 
+        * \param sender
+        * \param e
+        ***************************************************************************/
         private void Button2Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button2);
         }
 
+        /** ************************************************************************
+        * \brief 
+        * \details 
+        * \param sender
+        * \param e
+        ***************************************************************************/
         private void Button3Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button3);
         }
 
+        /** ************************************************************************
+        * \brief 
+        * \details 
+        * \param sender
+        * \param e
+        ***************************************************************************/
         private void Button4Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button4);
         }
 
+        /** ************************************************************************
+        * \brief 
+        * \details 
+        * \param sender
+        * \param e
+        ***************************************************************************/
         private void Button5Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button5);
         }
 
+        /** ************************************************************************
+        * \brief 
+        * \details 
+        * \param sender
+        * \param e
+        ***************************************************************************/
         private void Button6Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button6);
         }
 
+        /** ************************************************************************
+        * \brief 
+        * \details 
+        * \param sender
+        * \param e
+        ***************************************************************************/
         private void Button7Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button7);
         }
 
+        /** ************************************************************************
+        * \brief 
+        * \details 
+        * \param sender
+        * \param e
+        ***************************************************************************/
         private void Button8Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button8);
         }
 
+        /** ************************************************************************
+        * \brief 
+        * \details 
+        * \param sender
+        * \param e
+        ***************************************************************************/
         private void Button9Click(object sender, EventArgs e)
         {
             MarkSymbol(this.button9);
         }
 
+        /** ************************************************************************
+        * \brief Mark symbol.
+        * \details 
+        * \param button
+        ***************************************************************************/
         private void MarkSymbol(Button button)
         {
             button.Text = ((round % 2) == 0) ? player.Symbol.ToString() : computer.Symbol.ToString();
             button.Enabled = false;
+
+            // Call main function
             MainGame();
         }
 
-        /*--------------------------------------------------------------------------------------------------
-        Função: MainGame.
-        Descrição: Função responsável por gerenciar as jogadas e fazer o controle do jogo.
-        Argumentos: Nenhum.
-        Retorno: Nenhum.
-        ---------------------------------------------------------------------------------------------------*/
+        /** ************************************************************************
+        * \brief Main function.
+        * \details Function responsible for managing the plays and controlling the 
+        * game.
+        ***************************************************************************/
         private void MainGame()
         {
+            // Increment round
             round += 1;
+            
+            // Check end game
             CheckEndGame();
+
+            // Check is the current player is the Computer
             if ((round % 2) == 1)
             {
+                // Play computer
                 MarkSymbol(PlayComputer());
             }
         }
 
-        /*--------------------------------------------------------------------------------------------------
-        Função: CheckEndGame.
-        Descrição: Função que checa se o jogo chegou ao fim.
-        Argumentos: Nenhum.
-        Retorno: Nenhum.
-        ---------------------------------------------------------------------------------------------------*/
+        /** ************************************************************************
+        * \brief Check end game.
+        * \details Function that checks if the game has ended.
+        ***************************************************************************/
         private void CheckEndGame()
         {
             // Check if it's a draw (all 9 squares are filled and there's no winner)
@@ -135,15 +210,17 @@ namespace Tic_Tac_Toe
             }
         }
 
-        /*--------------------------------------------------------------------------------------------------
-        Função: NewGame.
-        Descrição: Função responsável por resetar o tabuleiro e as variáveis globais.
-        Argumentos: Nenhum.
-        Retorno: Nenhum.
-        ---------------------------------------------------------------------------------------------------*/
+        /** ************************************************************************
+        * \brief New game.
+        * \details Function responsible for resetting the board and global
+        * variables.
+        ***************************************************************************/
         private void NewGame()
         {
+            // Reset round number
             round = 0;
+
+            // Reset buttons
             foreach (Button button in buttons)
             {
                 button.Text = "";
@@ -152,12 +229,13 @@ namespace Tic_Tac_Toe
             }
         }
 
-        /*--------------------------------------------------------------------------------------------------
-        Função: CheckWinner.
-        Descrição: Função responsável por checar se há um vencedor em uma partida ou não.
-        Argumentos: Nenhum.
-        Retorno: Retorna uma classe do tipo 'Player' caso exista um vencedor, ou 'null' caso não exista.
-        ---------------------------------------------------------------------------------------------------*/
+        /** ************************************************************************
+        * \brief Check winner.
+        * \details Function responsible for checking if there is a winner in a
+        * match or not.
+        * \return Returns a 'Player' class if there is a winner, or 'null' if there
+        * is none.
+        ***************************************************************************/
         private Player CheckWinner()
         {
             // Check rows
@@ -201,13 +279,13 @@ namespace Tic_Tac_Toe
             return null;
         }
 
-        /*--------------------------------------------------------------------------------------------------
-        Função: ConvertStringToChar.
-        Descrição: Função responsável por converter uma variável do tipo string para char.
-                   Se a string estiver vazia, será retornado o caractere ' '.
-        Argumentos: s - string a ser convertida.
-        Retorno: Retorna o valor convertido no tipo char.
-        ---------------------------------------------------------------------------------------------------*/
+        /** ************************************************************************
+        * \brief Convert string to char.
+        * \details Function responsible for converting a string variable to a char 
+        * type. If the string is empty, the character ' ' will be returned.
+        * \param s String to be converted.
+        * \return Value converted in char type.
+        ***************************************************************************/
         private char ConvertStringToChar(string s)
         {
             try
@@ -220,22 +298,36 @@ namespace Tic_Tac_Toe
             }
         }
 
+        /** ************************************************************************
+        * \brief Check player winner.
+        * \details Function responsible for verifying if a player is a winner.
+        * \param c Character referring to the player.
+        * \return Winner (player or computer), if one exists. If not, returns null.
+        ***************************************************************************/
         private Player CheckPlayerWinner(char c)
         {
-            if (c == computer.Symbol)
+            // The computer won
+            if (c == computer.Symbol) 
             {
                 return computer;
             }
-            else if (c == player.Symbol)
+
+            // The palyer won
+            if (c == player.Symbol) 
             {
                 return player;
             }
-            else
-            {
-                return null;
-            }
+
+            // No one won
+            return null;
         }
 
+        /** ************************************************************************
+        * \brief Play computer.
+        * \details Function responsible for checking, based on a series of
+        * possibilities, and deciding which position the computer will play.
+        * \return Button corresponding to the position to be played by the computer.
+        ***************************************************************************/
         private Button PlayComputer()
         {
             Button button;
@@ -262,21 +354,21 @@ namespace Tic_Tac_Toe
                 }
                 else // If not, play in one of the corners
                 {
-                    return ShuffleButton(buttonsConners);
+                    return ShuffleButton(buttonsCorners);
                 }
             }
             else if (round == 3) // Exclusive possibilities of round 3
             {
                 // If two corners are marked by the player, play in the criss-cross position
-                if (CountButtonsMarkedByPlayer(buttonsConners) == 2)
+                if (CountButtonsMarkedByPlayer(buttonsCorners) == 2)
                 {
                     return ShuffleButton(buttonsCross);
                 }
 
                 // If two corners are marked by the player or computer, play in the corners
-                if (CountButtonsMarked(buttonsConners) == 2) 
+                if (CountButtonsMarked(buttonsCorners) == 2) 
                 {
-                    return ShuffleButton(buttonsConners);
+                    return ShuffleButton(buttonsCorners);
                 }
 
                 // Check main diagonal
@@ -302,9 +394,21 @@ namespace Tic_Tac_Toe
             return ShuffleButton(buttons);
         }
 
+        /** ************************************************************************
+        * \brief Check diagonals.
+        * \details Checks the fields that are on the diagonal, using the provided
+        * parameters.
+        * \param init First position of the diagonal.
+        * \param end Last position of the diagonal.
+        * \param step Step to traverse the diagonal.
+        * \return Returns a button from the diagonal if it should be played, or
+        * none if playing on the diagonal is indifferent.
+        ***************************************************************************/
         private Button CheckDiagonals(int init, int end, int step)
         {
             int count = 0;
+
+            // Count not empty fields
             for (int i = init; i <= end; i += step)
             {
                 if (ConvertStringToChar(buttons[i].Text) != ' ')
@@ -315,6 +419,7 @@ namespace Tic_Tac_Toe
 
             if(count == 2)
             {
+                // Count empty fields
                 for (int i = init; i <= end; i += step)
                 {
                     if (ConvertStringToChar(buttons[i].Text) == ' ')
@@ -327,16 +432,25 @@ namespace Tic_Tac_Toe
             return null;
         }
 
+        /** ************************************************************************
+        * \brief Check possible winner.
+        * \details Checks if the player provided is a potential winner.
+        * \param possibleWinner Player to be checked as a possible winner.
+        * \return Returns the position that should be played to win the game or
+        * avoid defeat.
+        ***************************************************************************/
         private Button CheckPossibleWinner(Player possibleWinner)
         {
             for (int i = 0; i < buttons.Length; i++)
             {
+                // Check empty fields
                 if (ConvertStringToChar(buttons[i].Text) != ' ')
                 {
                     continue;
                 }
                 else
                 {
+                    // Get symbol of the player informed
                     buttons[i].Text = possibleWinner.Symbol.ToString();
                     Player player = CheckWinner();
                     buttons[i].Text = ' '.ToString();
@@ -349,6 +463,12 @@ namespace Tic_Tac_Toe
             return null;
         }
 
+        /** ************************************************************************
+        * \brief Shuffle button.
+        * \details Randomly selects a button from a given set of buttons.
+        * \param buttons List of buttons eligible for random selection.
+        * \return Button chosen after the draw.
+        ***************************************************************************/
         private Button ShuffleButton(Button[] buttons)
         {
             List<Button> ListButtons = new List<Button>();
@@ -363,22 +483,49 @@ namespace Tic_Tac_Toe
             return ListButtons[randNum.Next(ListButtons.Count)];
         }
 
+        /** ************************************************************************
+        * \brief End game.
+        * \details Displays a message box with the provided message, indicating
+        * the end of the game.
+        * \param message Message to be displayed in the message box.
+        ***************************************************************************/
         private void EndGame(string message)
         {
             MessageBox.Show(message, "End of game");
+
+            // Start a new game
             NewGame();
         }
 
+        /** ************************************************************************
+        * \brief Count buttons marked by player.
+        * \details 
+        * \param buttons
+        * \return
+        ***************************************************************************/
         private int CountButtonsMarkedByPlayer(Button[] buttons)
         {
             return CountButtonsMarkedBySymbol(buttons, player.Symbol);
         }
 
+        /** ************************************************************************
+        * \brief Count buttons marked.
+        * \details 
+        * \param buttons
+        * \return
+        ***************************************************************************/
         private int CountButtonsMarked(Button[] buttons)
         {
             return CountButtonsMarkedBySymbol(buttons, ' ');
         }
 
+        /** ************************************************************************
+        * \brief Count buttons marked by symbol.
+        * \details 
+        * \param buttons
+        * \param symbol
+        * \return
+        ***************************************************************************/
         private int CountButtonsMarkedBySymbol(Button[] buttons, char symbol)
         {
             int quant = 0;
