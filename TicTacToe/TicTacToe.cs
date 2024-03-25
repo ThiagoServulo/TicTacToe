@@ -7,7 +7,7 @@ using Tic_Tac_Toe.Entities;
 namespace Tic_Tac_Toe
 {
     /** ************************************************************************
-    * \brief Information about the game.
+    * \brief Information about the game logic.
     * \details This class contains all functions responsible for the game logic.
     * \author Thiago Sérvulo Guimarães - thiagoservulog@gmail.com
     * \date 25/03/2024
@@ -47,7 +47,8 @@ namespace Tic_Tac_Toe
             computer = new Player(0, 0, 'O', "#ED6767");
 
             // Initialize buttons
-            buttons = new Button[9] { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
+            buttons = new Button[9] { button1, button2, button3, button4, button5, 
+                                      button6, button7, button8, button9 };
             buttonsCorners = new Button[4] { button1, button3, button7, button9 };
             buttonsCross = new Button[4] { button2, button4, button6, button8 };
 

@@ -1,17 +1,24 @@
-﻿
-namespace Tic_Tac_Toe
+﻿namespace Tic_Tac_Toe
 {
+    /** ************************************************************************
+    * \brief Information about the game board.
+    * \details This class contains all components for the game board.
+    * \author Thiago Sérvulo Guimarães - thiagoservulog@gmail.com
+    * \date 25/03/2024
+    * \version v1.1.0
+    ***************************************************************************/
     partial class TicTacToe
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
+        /// \brief Container for components.
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /** ************************************************************************
+        * \brief Dispose method for releasing managed resources.
+        * \details This method is used to release managed resources when they are
+        * no longer needed.
+        * \param disposing true to release both managed and unmanaged resources;
+        * false to release only unmanaged resources.
+        ***************************************************************************/
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -23,10 +30,10 @@ namespace Tic_Tac_Toe
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
+        /** ************************************************************************
+        * \brief Initializes the components.
+        * \details This method initializes the components used by the class.
+        ***************************************************************************/
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TicTacToe));
@@ -187,7 +194,7 @@ namespace Tic_Tac_Toe
             this.labelDefeats.TabIndex = 0;
             this.labelDefeats.Text = "Defeats: 0";
             // 
-            // Form1
+            // FormGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -207,7 +214,7 @@ namespace Tic_Tac_Toe
             this.MaximumSize = new System.Drawing.Size(411, 522);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(411, 522);
-            this.Name = "Form1";
+            this.Name = "FormGame";
             this.Text = "Tic-Tac-Toe";
             this.groupBoxScoreBoard.ResumeLayout(false);
             this.groupBoxScoreBoard.PerformLayout();

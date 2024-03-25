@@ -5,6 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Tic_Tac_Toe</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>icon_game.ico</ApplicationIcon>
+    <Authors>Thiago Sérvulo Guimarães</Authors>
+    <Company>Thiago Sérvulo Guimarães</Company>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
 </Project>
