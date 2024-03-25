@@ -260,18 +260,13 @@ namespace Tic_Tac_Toe
             else if (round == 3)
             {
                 // If two corners are marked, play in the criss-cross position
-                int quant = 0;
-                foreach (Button but in buttonsConners)
-                {
-                    if (ConvertStringToChar(but.Text) == player.Symbol)
-                    {
-                        quant += 1;
-                    }
-                }
-
-                if (quant == 2)
+                if (CountButtonsMarkedByPlayer(buttonsConners) == 2)
                 {
                     return ShuffleButton(buttonsCross);
+                }
+                else if(CountButtonsMarked(buttonsConners) == 2)
+                {
+                    return ShuffleButton(buttonsConners);
                 }
                 else
                 {
@@ -382,6 +377,32 @@ namespace Tic_Tac_Toe
         {
             MessageBox.Show(message, "End of game");
             NewGame();
+        }
+
+        private int CountButtonsMarkedByPlayer(Button[] buttons)
+        {
+            int quant = 0;
+            foreach (Button button in buttons)
+            {
+                if (ConvertStringToChar(button.Text) != player.Symbol)
+                {
+                    quant += 1;
+                }
+            }
+            return quant;
+        }
+
+        private int CountButtonsMarked(Button[] buttons)
+        {
+            int quant = 0;
+            foreach (Button button in buttons)
+            {
+                if (ConvertStringToChar(button.Text) != ' ')
+                {
+                    quant += 1;
+                }
+            }
+            return quant;
         }
     }
 
