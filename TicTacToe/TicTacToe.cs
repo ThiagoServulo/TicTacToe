@@ -33,22 +33,33 @@ namespace Tic_Tac_Toe
         /// \brief It contains all the buttons in the cross position of the board.
         private Button[] buttonsCross;
 
+        /** ************************************************************************
+        * \brief Constructor of the game.
+        * \details Constructor of the game.
+        ***************************************************************************/
         public TicTacToe()
         {
+            // Initialize component
             InitializeComponent();
-            player = new Player(0, 0, 'X');
-            computer = new Player(0, 0, 'O');
+
+            // Initialize palyers
+            player = new Player(0, 0, 'X', "#A4A4FF");
+            computer = new Player(0, 0, 'O', "#ED6767");
+
+            // Initialize buttons
             buttons = new Button[9] { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
             buttonsCorners = new Button[4] { button1, button3, button7, button9 };
             buttonsCross = new Button[4] { button2, button4, button6, button8 };
+
+            // Initialize new game
             NewGame();
         }
 
         /** ************************************************************************
-        * \brief 
-        * \details 
-        * \param sender
-        * \param e
+        * \brief Marks a symbol on the button.
+        * \details This method marks a symbol on the button 1.
+        * \param sender The sender object.
+        * \param e The event arguments.
         ***************************************************************************/
         private void Button1Click(object sender, EventArgs e)
         {
@@ -56,10 +67,10 @@ namespace Tic_Tac_Toe
         }
 
         /** ************************************************************************
-        * \brief 
-        * \details 
-        * \param sender
-        * \param e
+        * \brief Marks a symbol on the button.
+        * \details This method marks a symbol on the button 2.
+        * \param sender The sender object.
+        * \param e The event arguments.
         ***************************************************************************/
         private void Button2Click(object sender, EventArgs e)
         {
@@ -67,10 +78,10 @@ namespace Tic_Tac_Toe
         }
 
         /** ************************************************************************
-        * \brief 
-        * \details 
-        * \param sender
-        * \param e
+        * \brief Marks a symbol on the button.
+        * \details This method marks a symbol on the button 3.
+        * \param sender The sender object.
+        * \param e The event arguments.
         ***************************************************************************/
         private void Button3Click(object sender, EventArgs e)
         {
@@ -78,10 +89,10 @@ namespace Tic_Tac_Toe
         }
 
         /** ************************************************************************
-        * \brief 
-        * \details 
-        * \param sender
-        * \param e
+        * \brief Marks a symbol on the button.
+        * \details This method marks a symbol on the button 4.
+        * \param sender The sender object.
+        * \param e The event arguments.
         ***************************************************************************/
         private void Button4Click(object sender, EventArgs e)
         {
@@ -89,10 +100,10 @@ namespace Tic_Tac_Toe
         }
 
         /** ************************************************************************
-        * \brief 
-        * \details 
-        * \param sender
-        * \param e
+        * \brief Marks a symbol on the button.
+        * \details This method marks a symbol on the button 5.
+        * \param sender The sender object.
+        * \param e The event arguments.
         ***************************************************************************/
         private void Button5Click(object sender, EventArgs e)
         {
@@ -100,10 +111,10 @@ namespace Tic_Tac_Toe
         }
 
         /** ************************************************************************
-        * \brief 
-        * \details 
-        * \param sender
-        * \param e
+        * \brief Marks a symbol on the button.
+        * \details This method marks a symbol on the button 6.
+        * \param sender The sender object.
+        * \param e The event arguments.
         ***************************************************************************/
         private void Button6Click(object sender, EventArgs e)
         {
@@ -111,10 +122,10 @@ namespace Tic_Tac_Toe
         }
 
         /** ************************************************************************
-        * \brief 
-        * \details 
-        * \param sender
-        * \param e
+        * \brief Marks a symbol on the button.
+        * \details This method marks a symbol on the button 7.
+        * \param sender The sender object.
+        * \param e The event arguments.
         ***************************************************************************/
         private void Button7Click(object sender, EventArgs e)
         {
@@ -122,10 +133,10 @@ namespace Tic_Tac_Toe
         }
 
         /** ************************************************************************
-        * \brief 
-        * \details 
-        * \param sender
-        * \param e
+        * \brief Marks a symbol on the button.
+        * \details This method marks a symbol on the button 8.
+        * \param sender The sender object.
+        * \param e The event arguments.
         ***************************************************************************/
         private void Button8Click(object sender, EventArgs e)
         {
@@ -133,10 +144,10 @@ namespace Tic_Tac_Toe
         }
 
         /** ************************************************************************
-        * \brief 
-        * \details 
-        * \param sender
-        * \param e
+        * \brief Marks a symbol on the button.
+        * \details This method marks a symbol on the button 9.
+        * \param sender The sender object.
+        * \param e The event arguments.
         ***************************************************************************/
         private void Button9Click(object sender, EventArgs e)
         {
@@ -144,13 +155,22 @@ namespace Tic_Tac_Toe
         }
 
         /** ************************************************************************
-        * \brief Mark symbol.
-        * \details 
-        * \param button
+        * \brief Marks symbol on the button.
+        * \details This function marks a symbol on the specified button according
+        * to the current round.
+        * \param button The button to mark the symbol on.
         ***************************************************************************/
         private void MarkSymbol(Button button)
         {
+            // Check current palyer
             button.Text = ((round % 2) == 0) ? player.Symbol.ToString() : computer.Symbol.ToString();
+
+            // Set button color
+            button.UseVisualStyleBackColor = true;
+            Color color = ColorTranslator.FromHtml(((round % 2) == 0) ? player.Color : computer.Color);
+            button.BackColor = color;
+
+            // Update button status
             button.Enabled = false;
 
             // Call main function
@@ -474,6 +494,7 @@ namespace Tic_Tac_Toe
             List<Button> ListButtons = new List<Button>();
             for (int i = 0; i < buttons.Length; i++)
             {
+                // Check empty fields
                 if (ConvertStringToChar(buttons[i].Text) == ' ')
                 {
                     ListButtons.Add(buttons[i]);
@@ -491,17 +512,18 @@ namespace Tic_Tac_Toe
         ***************************************************************************/
         private void EndGame(string message)
         {
-            MessageBox.Show(message, "End of game");
+            // Show the message box
+            MessageBox.Show(message, "End of game", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Start a new game
             NewGame();
         }
 
         /** ************************************************************************
-        * \brief Count buttons marked by player.
-        * \details 
-        * \param buttons
-        * \return
+        * \brief Counts buttons marked by the player.
+        * \details This function counts the number of buttons marked by the player.
+        * \param buttons The array of buttons representing the game board.
+        * \return The number of buttons marked by the player.
         ***************************************************************************/
         private int CountButtonsMarkedByPlayer(Button[] buttons)
         {
@@ -509,10 +531,10 @@ namespace Tic_Tac_Toe
         }
 
         /** ************************************************************************
-        * \brief Count buttons marked.
-        * \details 
-        * \param buttons
-        * \return
+        * \brief Counts marked buttons.
+        * \details This function counts the number of buttons that are marked.
+        * \param buttons The array of buttons representing the game board.
+        * \return The number of marked buttons.
         ***************************************************************************/
         private int CountButtonsMarked(Button[] buttons)
         {
@@ -520,11 +542,12 @@ namespace Tic_Tac_Toe
         }
 
         /** ************************************************************************
-        * \brief Count buttons marked by symbol.
-        * \details 
-        * \param buttons
-        * \param symbol
-        * \return
+        * \brief Counts buttons marked by a specific symbol.
+        * \details This function counts the number of buttons marked with the
+        * specified symbol.
+        * \param buttons The array of buttons representing the game board.
+        * \param symbol The symbol to count.
+        * \return The number of buttons marked by the specified symbol.
         ***************************************************************************/
         private int CountButtonsMarkedBySymbol(Button[] buttons, char symbol)
         {
@@ -540,13 +563,12 @@ namespace Tic_Tac_Toe
         }
 
         /** ************************************************************************
-        * \brief 
-        * \details 
-        *    |   |
-        * -----------
-        *  X |   |
-        * -----------
-        *  A | X |
+        * \brief Checks for a special condition on the cross.
+        * \details This function checks for a special condition where X marks are
+        * on two corners of the cross.
+        * \param buttons The array of buttons representing the game board.
+        * \return The button representing the empty cell in the cross, or null if
+        * the condition is not met.
         ***************************************************************************/
         private Button CheckSpecialConditionOfTheCross(Button[] buttons)
         {

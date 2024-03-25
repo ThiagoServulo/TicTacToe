@@ -10,11 +10,14 @@ namespace Tic_Tac_Toe.Entities
         public int Draws { get; set; }
         public char Symbol { get; set; }
 
-        public Player(int victories, int draws, char symbol)
+        public string Color { get; set; }
+
+        public Player(int victories, int draws, char symbol, string color)
         {
             Victories = victories;
             Draws = draws;
             Symbol = symbol;
+            Color = color;
         }
 
         public void AddVictory()
