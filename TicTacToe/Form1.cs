@@ -6,6 +6,13 @@ using Tic_Tac_Toe.Entities;
 
 namespace Tic_Tac_Toe
 {
+    /** ************************************************************************
+    * \brief Information about the game.
+    * \details 
+    * \author Thiago Sérvulo Guimarães - thiagoservulog@gmail.com
+    * \date 25/03/2024
+    * \version v1.1.0
+    ***************************************************************************/
     public partial class Form1 : Form
     {
         private int round;
@@ -245,6 +252,7 @@ namespace Tic_Tac_Toe
                 return button;
             }
 
+            // Exclusive possibilities of round 1
             if (round == 1)
             {
                 // If the center is empty, play there
@@ -257,55 +265,37 @@ namespace Tic_Tac_Toe
                     return ShuffleButton(buttonsConners);
                 }
             }
-            else if (round == 3)
+            else if (round == 3) // Exclusive possibilities of round 3
             {
-                // If two corners are marked, play in the criss-cross position
+                // If two corners are marked by the player, play in the criss-cross position
                 if (CountButtonsMarkedByPlayer(buttonsConners) == 2)
                 {
                     return ShuffleButton(buttonsCross);
                 }
-                else if(CountButtonsMarked(buttonsConners) == 2)
+
+                // If two corners are marked by the player or computer, play in the corners
+                if (CountButtonsMarked(buttonsConners) == 2) 
                 {
                     return ShuffleButton(buttonsConners);
                 }
-                else
-                {
-                    // Check main diagonal
-                    if ((button = CheckDiagonals(0, 8, 4)) != null) 
-                    {
-                        return button;
-                    }
 
-                    // Check secundary diagonal
-                    if ((button = CheckDiagonals(2, 6, 2)) != null)
-                    {
-                        return button;
-                    }
+                // Check main diagonal
+                if ((button = CheckDiagonals(0, 8, 4)) != null) 
+                {
+                    return button;
                 }
 
-                if ((ConvertStringToChar(buttons[1].Text) == ConvertStringToChar(buttons[3].Text)) &&
-                    (ConvertStringToChar(buttons[1].Text) != ' '))
+                // Check secundary diagonal
+                if ((button = CheckDiagonals(2, 6, 2)) != null)
                 {
-                    return buttons[0];
+                    return button;
                 }
 
-                if ((ConvertStringToChar(buttons[1].Text) == ConvertStringToChar(buttons[5].Text)) &&
-                    (ConvertStringToChar(buttons[1].Text) != ' '))
+                // Check special condition of the cross
+                if ((button = CheckSpecialConditionOfTheCross(buttons)) != null)
                 {
-                    return buttons[2];
-                }
-
-                if ((ConvertStringToChar(buttons[3].Text) == ConvertStringToChar(buttons[7].Text)) &&
-                    (ConvertStringToChar(buttons[3].Text) != ' '))
-                {
-                    return buttons[6];
-                }
-
-                if ((ConvertStringToChar(buttons[5].Text) == ConvertStringToChar(buttons[7].Text)) &&
-                    (ConvertStringToChar(buttons[5].Text) != ' '))
-                {
-                    return buttons[8];
-                }
+                    return button;
+                } 
             }
 
             // Randomly choose an empty square to play
@@ -381,10 +371,20 @@ namespace Tic_Tac_Toe
 
         private int CountButtonsMarkedByPlayer(Button[] buttons)
         {
+            return CountButtonsMarkedBySymbol(buttons, player.Symbol);
+        }
+
+        private int CountButtonsMarked(Button[] buttons)
+        {
+            return CountButtonsMarkedBySymbol(buttons, ' ');
+        }
+
+        private int CountButtonsMarkedBySymbol(Button[] buttons, char symbol)
+        {
             int quant = 0;
             foreach (Button button in buttons)
             {
-                if (ConvertStringToChar(button.Text) != player.Symbol)
+                if (ConvertStringToChar(button.Text) != symbol)
                 {
                     quant += 1;
                 }
@@ -392,17 +392,47 @@ namespace Tic_Tac_Toe
             return quant;
         }
 
-        private int CountButtonsMarked(Button[] buttons)
+        /** ************************************************************************
+        * \brief 
+        * \details 
+        *    |   |
+        * -----------
+        *  X |   |
+        * -----------
+        *  A | X |
+        ***************************************************************************/
+        private Button CheckSpecialConditionOfTheCross(Button[] buttons)
         {
-            int quant = 0;
-            foreach (Button button in buttons)
+            // Check condition on fields 1 and 3
+            if ((ConvertStringToChar(buttons[1].Text) == ConvertStringToChar(buttons[3].Text)) &&
+                (ConvertStringToChar(buttons[1].Text) != ' '))
             {
-                if (ConvertStringToChar(button.Text) != ' ')
-                {
-                    quant += 1;
-                }
+                return buttons[0];
             }
-            return quant;
+
+            // Check condition on fields 1 and 5
+            if ((ConvertStringToChar(buttons[1].Text) == ConvertStringToChar(buttons[5].Text)) &&
+                (ConvertStringToChar(buttons[1].Text) != ' '))
+            {
+                return buttons[2];
+            }
+
+            // Check condition on fields 3 and 7
+            if ((ConvertStringToChar(buttons[3].Text) == ConvertStringToChar(buttons[7].Text)) &&
+                (ConvertStringToChar(buttons[3].Text) != ' '))
+            {
+                return buttons[6];
+            }
+
+            // Check condition on fields 5 and 7
+            if ((ConvertStringToChar(buttons[5].Text) == ConvertStringToChar(buttons[7].Text)) &&
+                (ConvertStringToChar(buttons[5].Text) != ' '))
+            {
+                return buttons[8];
+            }
+
+            // No condition was found
+            return null;
         }
     }
 
